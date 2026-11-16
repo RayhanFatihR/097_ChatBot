@@ -73,4 +73,14 @@ app.post('/api/chat', (req, res) => {
                 // Simpan bagian terakhir yang belum lenkap
                 buffer = lines.pop();
 
+                for (const line of lines) {
+
+                    const trimmedLine = line.trim();
+
+                    if (!trimmedLine) {
+                        continue;
+                    }
+
+                    
+
                     
