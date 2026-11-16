@@ -124,11 +124,8 @@ chatForm.addEventListener("submit", async (event) => {
                 }
 
                 try {
-                    const json = JSON.parse(data);
-
-                    // Ambil token dari response AI
-                    const token =
-                        json.choices[0].delta.content || "";
+                    // Ambil token dari backend
+                    const token = JSON.parse(data);
 
                     // Tambahkan token
                     botResponse += token;
