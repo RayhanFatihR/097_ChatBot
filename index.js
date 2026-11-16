@@ -15,8 +15,19 @@ app.get('/', (req, res) => {
 
 app.post('/api/chat', (req, res) => {
     try {
-        const { message } = req.body.message;
+        const { messages } = req.body   ;
 
         if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({ error: 'Messages harus berupa array' });
         }
+
+        const response = await fetch(
+                `https://api.openai.com/v1/chat/completions`, 
+                {
+                    method: 'POST',
+                    
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                    },
+                    
