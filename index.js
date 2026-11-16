@@ -59,4 +59,18 @@ app.post('/api/chat', (req, res) => {
 
             let buffer = '';
 
+            while (true) {
+                const { done, value } = await reader.read();
+
+                if (done) {
+                    break;
+                }
+            
+                buffer += decoder.decode(value, { stream: true });
+
+                const lines = buffer.split('\n');
+
+                // Simpan bagian terakhir yang belum lenkap
+                buffer = lines.pop();
+
                     
