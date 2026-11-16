@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Chatbot</title>
+    <title>Chatbot AI</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,37 +14,43 @@
 
     <div class="chat-container">
 
+        <!-- Header -->
         <div class="chat-header">
             <h1>Chatbot AI</h1>
         </div>
-    
+
+        <!-- Chat Box -->
         <div id="chat-box" class="chat-box">
-            
-            <div class="massage bot">
-                <div class="massage-content">
-                    Halo! Saya adalah Chatbot AI. Bagaimana saya bisa membantu Anda hari ini?
+
+            <div class="message bot">
+                <div class="message-content">
+                    Halo! Saya adalah Chatbot AI.
+                    Bagaimana saya bisa membantu Anda hari ini?
                 </div>
             </div>
 
         </div>
 
+        <!-- Form Chat -->
         <form id="chat-form" class="chat-form">
-            <input 
+
+            <input
                 type="text"
-                id="user-input" 
-                placeholder="Ketik pesan Anda..." 
+                id="user-input"
+                placeholder="Ketik pesan Anda..."
                 autocomplete="off"
                 required
             >
-            
+
             <button type="submit">
                 Kirim
             </button>
-        
-        </form> 
+
+        </form>
+
     </div>
 
     <script src="script.js"></script>
-    
+
 </body>
 </html>
