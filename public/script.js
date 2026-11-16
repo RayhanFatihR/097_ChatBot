@@ -87,3 +87,42 @@ chatForm.addEventListener("submit", async (event) => {
                 if (!trimmedLine.startsWith("data: ")) {
                     continue;
                 }
+                const data = trimmedLine.slice(5).trim();
+                if (data === "[DONE]") {
+                    continue;
+                }
+                try {
+                    const json = JSON.parse(data);
+                    // Tambahkan token
+                    botResponse += token;
+                    // Update tampilan
+                    botContent.textContent = botResponse;
+                    // Auto scroll
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                } catch (error) {
+                    console.error(
+                        "Gagal membaca token:",
+                        error
+                    );
+                }
+            }
+        }
+
+        // Simpan response ai
+        messages.push({
+            role: "assistant",
+            content: botResponse
+        });
+    } catch (error) {
+        console.error(error);
+        botContent.textContent = "Maaf, terjadi kesalahan: " + error.message;
+    } finally {
+        // Aktifkan kembali input
+        userInput.disabled = false;
+        button.disabled = false;
+        button.textContent = "Kirim";
+        userInput.focus();
+    }
+});
+    
+                
