@@ -45,3 +45,25 @@ chatForm.addEventListener("submit", async (event) => {
     // ====================
     // Buat bubble AI kosong
     // ====================
+    const botContent = addMessage("", "bot");
+    let botResponse = "";
+    try {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ messages: messages })
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(
+                errorData.error || "Terjadi kesalahan."
+            );
+        }
+
+        // =======================
+        // Baca streaming response
+        // ======================
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
